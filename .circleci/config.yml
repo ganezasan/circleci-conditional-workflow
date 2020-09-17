@@ -7,7 +7,7 @@ jobs:
       - run: echo "hello"
       
 workflows:
-  version:2 
+  version: 2 
   workflow-1:
     when:
       - not: $CIRCLE_PR_NUMBER
