@@ -10,11 +10,16 @@ workflows:
   version: 2 
   workflow-1:
     when:
-      - not: $CIRCLE_PR_NUMBER
+      - not: <<$CIRCLE_PR_NUMBER>>
     jobs:
       - build
   workflow-2:
     when:
-      - equal: [master,$CIRCLE_BRANCH]
+      - not: <<echo $CIRCLE_PR_NUMBER>>
+    jobs:
+      - build
+  workflow-3:
+    when:
+      - equal: [master, <<$CIRCLE_BRANCH>>]
     jobs:
       - build
